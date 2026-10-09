@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Hubtel Payment</title>
+    <script src="https://unified-pay.hubtel.com/js/v1/checkout.js"></script>
+</head>
+<body>
+    <h2>Test Payment</h2>
+    
+    <form id="payment-form">
+        <input type="text" id="name" placeholder="Your Name" value="John Doe" required><br>
+        <input type="tel" id="phone" placeholder="Phone Number" value="0541234567" required><br>
+        <select id="destination">
+            <option value="Kumasi">Kumasi - GHS 120</option>
+            <option value="Takoradi">Takoradi - GHS 100</option>
+            <option value="Cape Coast">Cape Coast - GHS 80</option>
+        </select><br>
+        <button type="submit" id="pay-btn">Pay Now</button>
+    </form>
+
+    <script src="js/payment.js"></script>
+    <script>
+        document.getElementById('payment-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const prices = {
+                'Kumasi': 120,
+                'Takoradi': 100,
+                'Cape Coast': 80
+            };
+            
+            const destination = document.getElementById('destination').value;
+            
+            const bookingData = {
+                amount: prices[destination],
+                bookingId: 'TEST-' + Date.now(),
+                passengerName: document.getElementById('name').value,
+                passengerPhone: document.getElementById('phone').value,
+                destination: destination
+            };
+
+            const payment = new WKMPayment();
+            await payment.initiatePayment(bookingData);
+        });
+    </script>
+</body>
+</html>

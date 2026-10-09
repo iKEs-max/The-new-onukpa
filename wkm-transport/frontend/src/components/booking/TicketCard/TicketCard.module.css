@@ -1,0 +1,106 @@
+.ticket {
+  padding: var(--spacing-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.ticketNumber {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.statusBadge {
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.statusConfirmed { background: rgba(34,197,94,0.1); color: #16a34a; }
+.statusPending { background: rgba(234,179,8,0.1); color: #ca8a04; }
+.statusCancelled { background: rgba(239,68,68,0.1); color: #dc2626; }
+.statusCompleted { background: rgba(59,130,246,0.1); color: #2563eb; }
+
+.route {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.locationPoint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.iconAccent { color: var(--warning); }
+.iconPrimary { color: var(--primary); }
+.iconMuted { color: var(--text-muted); }
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) 0;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  margin-bottom: var(--spacing-md);
+}
+
+.detailRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.detailLabel {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalLabel {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.totalAmount {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}

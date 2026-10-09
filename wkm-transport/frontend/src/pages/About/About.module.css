@@ -1,0 +1,116 @@
+.page { overflow-x: hidden; }
+
+/* Hero */
+.hero { 
+  background: var(--gradient-hero); 
+  background-image: 
+    linear-gradient(to bottom, rgba(2, 6, 23, 0.7), rgba(2, 6, 23, 0.4)),
+    url('@/assets/images/hero-nano.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: calc(var(--header-height) + 6rem) 0 8rem; 
+}
+.heroInner {
+  max-width: 680px;
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+.heroInner h1 { color: #fff; }
+.heroInner p  { color: rgba(255,255,255,.8); font-size: 1.1rem; line-height: 1.7; }
+.heroCtas { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: .5rem; }
+.btnPrimary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: var(--radius-full);
+  background: var(--gradient-cta); color: #fff;
+  font-weight: 700; font-size: 1rem;
+  box-shadow: 0 4px 20px rgba(79,70,229,.4);
+  transition: transform .2s;
+}
+.btnPrimary:hover { transform: translateY(-2px); }
+.btnOutline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: var(--radius-full);
+  border: 2px solid rgba(255,255,255,.5); color: #fff;
+  font-weight: 600; font-size: 1rem; transition: background .2s;
+}
+.btnOutline:hover { background: rgba(255,255,255,.1); }
+
+/* MV */
+.mvSection { background: #fff; }
+.mvGrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.mvCard { 
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 2.5rem 2rem; 
+  text-align: center; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: .75rem; 
+  transition: transform .3s;
+}
+.mvCard:hover { transform: translateY(-5px); }
+.mvIcon {
+  width: 56px; height: 56px; border-radius: 16px;
+  background: #ede9fe; color: var(--brand-primary);
+  display: flex; align-items: center; justify-content: center;
+}
+.mvIconTeal { background: #cffafe; color: #0891b2; }
+.mvIconGreen { background: #d1fae5; color: #065f46; }
+
+/* Stats */
+.statsSection { background: var(--color-bg); }
+.statsGrid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
+.statCard {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 1.5rem; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  transition: all .3s;
+}
+.statCard:hover { transform: scale(1.05); border-color: var(--brand-primary); }
+.statIcon { width: 44px; height: 44px; border-radius: 12px; background: #ede9fe; color: var(--brand-primary); display: flex; align-items: center; justify-content: center; }
+.statCard strong { font-size: 2rem; font-family: 'Poppins',sans-serif; }
+.statCard span   { color: var(--color-text-muted); font-size: .9rem; }
+
+/* Team */
+.teamGrid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+.teamCard { 
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  padding: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .5rem; 
+  transition: transform .3s;
+  border-bottom: 2px dashed var(--brand-primary-light); /* Stitch effect */
+}
+.teamCard:hover { transform: translateY(-5px); border-color: var(--brand-primary); }
+.teamAvatar {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: var(--gradient-cta); color: #fff;
+  font-size: 1.75rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: .5rem;
+}
+.teamCard strong { font-size: 1.05rem; }
+.teamCard span   { color: var(--color-text-muted); font-size: .85rem; }
+
+/* CTA */
+.ctaBanner { background: var(--gradient-cta); text-align: center; }
+.ctaBanner h2 { color: #fff; margin-bottom: .75rem; }
+.ctaBanner p  { color: rgba(255,255,255,.8); margin-bottom: 2rem; }
+
+@media (max-width: 900px) {
+  .mvGrid    { grid-template-columns: 1fr; }
+  .statsGrid { grid-template-columns: repeat(2,1fr); }
+  .teamGrid  { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 580px) {
+  .teamGrid { grid-template-columns: 1fr; }
+  .statsGrid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,129 @@
+.header {
+  position: fixed;
+  top: 1.25rem; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  z-index: 1000;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 99px;
+  transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 68px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.1);
+}
+.header.scrolled {
+  top: 0.75rem;
+  width: calc(100% - 1rem);
+  max-width: 1300px;
+  background: var(--nav-bg);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--nav-border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 100%;
+}
+
+/* ── Logo ── */
+.logo {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 1.05rem; font-weight: 700; flex-shrink: 0;
+  text-decoration: none; color: var(--color-text);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .85; }
+.logoIcon {
+  display: flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px;
+  background: var(--brand-primary);
+  color: #fff; border-radius: 10px;
+  transition: background .4s;
+}
+.logoText strong { color: var(--brand-primary); transition: color .4s; }
+
+/* ── Desktop Nav ── */
+.desktopNav {
+  display: flex; align-items: center; gap: 2px;
+  flex: 1; justify-content: center;
+}
+.navLink {
+  padding: 6px 14px; border-radius: 9999px;
+  font-size: .875rem; font-weight: 500;
+  color: var(--nav-link);
+  transition: color .2s, background .2s;
+}
+.navLink:hover { color: var(--nav-link-act); background: var(--nav-link-bg); }
+.navLink.active { color: var(--nav-link-act); background: var(--nav-link-bg); font-weight: 600; }
+
+/* ── Desktop actions ── */
+.actions {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+}
+.ctaOutline {
+  padding: 7px 16px; border-radius: 9999px;
+  border: 1.5px solid var(--color-border);
+  font-size: .8125rem; font-weight: 600;
+  color: var(--color-text); background: transparent;
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.ctaOutline:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
+.ctaPrimary {
+  padding: 7px 20px; border-radius: 9999px;
+  background: var(--brand-primary); color: #fff;
+  font-size: .8125rem; font-weight: 700;
+  transition: background .2s, transform .15s;
+}
+.ctaPrimary:hover { background: var(--brand-primary-dark); transform: translateY(-1px); }
+
+/* ── Mobile: always-visible theme + hamburger ── */
+.mobileActions { display: none; align-items: center; gap: 8px; margin-left: auto; }
+.hamburger {
+  display: flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 8px;
+  color: var(--color-text);
+  transition: background .2s;
+}
+.hamburger:hover { background: var(--color-surface-2); }
+
+/* ── Mobile Drawer ── */
+.mobileDrawer {
+  display: none;
+  flex-direction: column;
+  padding: 10px 14px 18px;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+  animation: fadeInUp .2s ease both;
+}
+.mobileLink {
+  padding: 12px 14px; border-radius: 8px;
+  font-size: .9375rem; font-weight: 500;
+  color: var(--color-text-muted);
+  transition: background .15s, color .15s;
+}
+.mobileLink:hover    { background: var(--color-surface-2); color: var(--color-text); }
+.mobileLink.mobileActive { background: var(--nav-link-bg); color: var(--nav-link-act); font-weight: 600; }
+.mobileDivider { height: 1px; background: var(--color-border); margin: 6px 0; }
+.mobileCta {
+  display: block; text-align: center;
+  padding: 13px; border-radius: 10px;
+  background: var(--gradient-cta); color: #fff;
+  font-size: .9375rem; font-weight: 700;
+  margin-top: 6px; transition: opacity .2s;
+}
+.mobileCta:hover { opacity: .88; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .desktopNav   { display: none; }
+  .actions      { display: none; }
+  .mobileActions{ display: flex; }
+  .mobileDrawer { display: flex; }
+}

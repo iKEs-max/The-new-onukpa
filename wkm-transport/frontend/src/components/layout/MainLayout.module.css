@@ -1,0 +1,19 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+}
+
+.dashboardContainer {
+  display: flex;
+  flex: 1;
+}
+
+.dashboardMain {
+  flex: 1;
+  padding: 2rem 0;
+}

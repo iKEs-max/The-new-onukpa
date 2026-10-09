@@ -1,0 +1,100 @@
+.wrapper {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.th {
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface-2);
+  cursor: default;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.th:has(.sortIcons) {
+  cursor: pointer;
+}
+.th:has(.sortIcons):hover {
+  color: var(--color-text);
+  background-color: var(--color-surface-3);
+}
+
+.thContent {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortIcons {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text-muted);
+  opacity: 0.4;
+}
+.sortActive {
+  color: var(--brand-primary);
+  opacity: 1;
+}
+
+.td {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.row {
+  transition: background-color 0.2s ease;
+}
+.row:last-child td { border-bottom: none; }
+
+.clickableRow {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.clickableRow:hover {
+  background-color: var(--color-surface-2);
+}
+.clickableRow:last-child td { border-bottom: none; }
+
+.empty {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+}
+
+.skeleton {
+  height: 44px;
+  background: linear-gradient(90deg, var(--border) 25%, rgba(0,0,0,0.04) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius-md);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}

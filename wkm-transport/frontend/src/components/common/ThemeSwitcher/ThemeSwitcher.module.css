@@ -1,0 +1,53 @@
+.switcherBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-right: 0.5rem;
+}
+
+.switcherBtn:hover {
+  color: var(--brand-primary);
+  border-color: var(--brand-primary-light);
+  background: var(--badge-primary-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--brand-primary-rgb, 79, 70, 229), 0.15);
+}
+
+.switcherBtn:active {
+  transform: translateY(0);
+}
+
+.iconWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5) rotate(-30deg);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.iconWrapper.active {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  opacity: 1;
+}
+
+/* Specific theme hover colors */
+:global([data-theme="dark"]) .switcherBtn:hover {
+  color: #fbbf24; /* Sun color for next theme */
+  border-color: #f59e0b;
+}
+
+:global([data-theme="sunset"]) .switcherBtn:hover {
+  color: #3b82f6; /* Light color for next theme */
+  border-color: #60a5fa;
+}

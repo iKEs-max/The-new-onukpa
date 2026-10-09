@@ -1,0 +1,100 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--spacing-lg) var(--spacing-lg) 0;
+}
+
+.locations {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.locationPoint {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.city {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.iconAccent { color: var(--warning); }
+.iconPrimary { color: var(--primary); }
+.iconMuted { color: var(--text-muted); }
+.iconError { color: var(--error); }
+
+.body {
+  padding: 0 var(--spacing-lg);
+}
+
+.times {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.timeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timeLine {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--primary) 0%,
+    var(--text-muted) 100%
+  );
+  border-radius: 1px;
+  margin-top: var(--spacing-md);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+  border-top: 1px solid var(--border);
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.seats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 0.875rem;
+}
+
+.textNormal { color: var(--text-secondary); }
+.textError { color: var(--error); font-weight: 500; }

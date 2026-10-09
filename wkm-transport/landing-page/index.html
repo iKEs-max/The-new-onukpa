@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onukpa Express Ride - Safe, Reliable & Affordable Travel in Ghana</title>
+    <meta name="description" content="Book affordable bus tickets from Accra to Kumasi, Takoradi, Cape Coast and more. Pay with mobile money via Hubtel.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect width="32" height="32" rx="8" fill="url(#logoGrad)"/>
+                        <path d="M8 22V12L16 7L24 12V22L16 27L8 22Z" fill="white" fill-opacity="0.9"/>
+                        <path d="M16 7V27M8 12L24 22M24 12L8 22" stroke="white" stroke-width="1.5" stroke-opacity="0.3"/>
+                        <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#F59E0B"/><stop offset="1" stop-color="#D97706"/></linearGradient></defs>
+                    </svg>
+                </div>
+                <span class="logo-text">Onukpa Express <span class="logo-accent">Ride</span></span>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#routes-section">Routes</a></li>
+                <li><a href="#book">Book Trip</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="dashboard/" class="nav-admin-btn">Admin</a></li>
+                <li>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Switch theme">
+                        🌙
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <!-- Moving road lines -->
+        <div class="road-lines">
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+            <div class="road-line"></div>
+        </div>
+        <!-- Animated bus -->
+        <div class="bus-animation">🚌</div>
+        <div class="hero-content">
+            <div class="hero-badge">🚌 Ghana's Trusted Transport Service</div>
+            <h1>Travel from <span class="gradient-text">Accra</span> to Anywhere</h1>
+            <p class="hero-subtitle">Safe, reliable, and affordable intercity transport. Book your trip in seconds and pay with mobile money.</p>
+
+            <!-- Quick Booking Form -->
+            <div class="booking-card" id="book">
+                <div class="booking-card-header">
+                    <h3>🎫 Book Your Trip</h3>
+                    <p>Find the perfect route for you</p>
+                </div>
+                <form id="booking-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="route-select">Destination</label>
+                            <select name="destination" id="route-select" required>
+                                <option value="">Select destination...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="travel-date">Travel Date</label>
+                            <input type="date" name="travel-date" id="travel-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="departure-time">Departure Time</label>
+                            <select name="departure-time" id="departure-time" required>
+                                <option value="">Select time...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="passengers">Passengers</label>
+                            <select name="passengers" id="passengers" required>
+                                <option value="1">1 Passenger</option>
+                                <option value="2">2 Passengers</option>
+                                <option value="3">3 Passengers</option>
+                                <option value="4">4 Passengers</option>
+                                <option value="5">5 Passengers</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="price-display" id="price-display" hidden>
+                        <div class="price-row">
+                            <span>Price per person:</span>
+                            <span id="unit-price">GHS 0</span>
+                        </div>
+                        <div class="price-row price-total">
+                            <span>Total:</span>
+                            <span id="total-price">GHS 0</span>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-primary btn-full" id="continue-booking-btn">Continue Booking →</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Passenger Details Modal -->
+    <div class="modal-overlay" id="passenger-modal" hidden>
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Passenger Details</h3>
+                <button class="modal-close" id="close-modal">&times;</button>
+            </div>
+            <div class="booking-summary" id="modal-summary"></div>
+            <form id="passenger-form">
+                <div class="form-group">
+                    <label for="passenger-name">Full Name *</label>
+                    <input type="text" id="passenger-name" placeholder="e.g. Kwame Asante" required>
+                </div>
+                <div class="form-group">
+                    <label for="passenger-phone">Phone Number *</label>
+                    <input type="tel" id="passenger-phone" placeholder="e.g. 0541234567" required>
+                </div>
+                <div class="form-group">
+                    <label for="passenger-email">Email (optional)</label>
+                    <input type="email" id="passenger-email" placeholder="e.g. you@email.com">
+                </div>
+                <button type="submit" class="btn-primary btn-full" id="pay-now-btn">
+                    <span class="btn-text">💳 Pay Now</span>
+                    <span class="btn-loader" hidden>Processing...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popular Routes Section -->
+    <section class="routes-section" id="routes-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Popular Routes</span>
+                <h2>Our Most Traveled <span class="gradient-text">Destinations</span></h2>
+                <p>Choose from our carefully curated routes across Ghana</p>
+            </div>
+            <div class="route-grid stagger-children" id="route-grid">
+                <div class="loading-spinner" id="routes-loader">
+                    <div class="spinner"></div>
+                    <p>Loading routes...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Simple Process</span>
+                <h2>How It <span class="gradient-text">Works</span></h2>
+                <p>Book your trip in 4 easy steps</p>
+            </div>
+            <div class="steps-grid stagger-children">
+                <div class="step-card reveal">
+                    <div class="step-icon">
+                        <div class="step-number">1</div>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    </div>
+                    <h4>Search</h4>
+                    <p>Choose your destination and preferred date</p>
+                </div>
+                <div class="step-connector"><svg width="40" height="2"><line x1="0" y1="1" x2="40" y2="1" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+                <div class="step-card reveal">
+                    <div class="step-icon">
+                        <div class="step-number">2</div>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    </div>
+                    <h4>Book</h4>
+                    <p>Select your trip time and enter your details</p>
+                </div>
+                <div class="step-connector"><svg width="40" height="2"><line x1="0" y1="1" x2="40" y2="1" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+                <div class="step-card reveal">
+                    <div class="step-icon">
+                        <div class="step-number">3</div>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    </div>
+                    <h4>Pay</h4>
+                    <p>Pay securely via mobile money or card</p>
+                </div>
+                <div class="step-connector"><svg width="40" height="2"><line x1="0" y1="1" x2="40" y2="1" stroke="#E5E7EB" stroke-width="2" stroke-dasharray="4 4"/></svg></div>
+                <div class="step-card reveal">
+                    <div class="step-icon">
+                        <div class="step-number">4</div>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h4>Travel</h4>
+                    <p>Get your e-ticket and enjoy the ride!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid stagger-children">
+                <div class="feature-card reveal-scale">
+                    <div class="feature-icon">🛡️</div>
+                    <h4>Safe & Insured</h4>
+                    <p>All our vehicles are fully insured and regularly maintained for your safety.</p>
+                </div>
+                <div class="feature-card reveal-scale">
+                    <div class="feature-icon">📱</div>
+                    <h4>Mobile Money</h4>
+                    <p>Pay easily with MTN MoMo, AirtelTigo, or Telecel Cash.</p>
+                </div>
+                <div class="feature-card reveal-scale">
+                    <div class="feature-icon">🎫</div>
+                    <h4>E-Tickets</h4>
+                    <p>Receive your ticket instantly via email or SMS after payment.</p>
+                </div>
+                <div class="feature-card reveal-scale">
+                    <div class="feature-icon">⏰</div>
+                    <h4>On Time</h4>
+                    <p>We pride ourselves on punctual departures and arrivals across Ghana.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Check Booking Section -->
+    <section class="check-booking" id="check-booking">
+        <div class="container">
+            <div class="check-booking-card reveal-scale">
+                <h3>🎫 Check Your Booking</h3>
+                <p>Enter your ticket code to view your booking details</p>
+                <div class="check-form">
+                    <input type="text" id="ticket-code-input" placeholder="e.g. OER-ABC123">
+                    <button class="btn-primary" id="check-ticket-btn">Check</button>
+                </div>
+                <div id="ticket-result" hidden></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Track Trip Section (New Feature) -->
+    <section class="track-trip" id="track-trip">
+        <div class="container">
+            <div class="track-card reveal-scale">
+                <div class="track-header">
+                    <h3>📍 Track Your Loved Ones</h3>
+                    <p>Enter the ticket number to see where the bus is and its estimated arrival time.</p>
+                </div>
+                <div class="track-form">
+                    <input type="text" id="track-ticket-input" placeholder="e.g. WKM-ABC123">
+                    <button class="btn-primary" id="track-btn">Track Trip Now</button>
+                </div>
+                <div id="track-result" class="track-result" hidden>
+                    <div class="track-status-box">
+                        <div class="status-indicator">
+                            <span class="status-dot pulse"></span>
+                            <span id="track-status-text">In Transit</span>
+                        </div>
+                        <div class="track-info-grid">
+                            <div class="info-item">
+                                <span class="label">Destination</span>
+                                <span id="track-dest" class="value">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Estimated Arrival</span>
+                                <span id="track-eta" class="value">calculating...</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="track-progress" style="width: 45%;"></div>
+                            <span class="bus-marker" style="left: 45%;">🚌</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Get in Touch</span>
+                <h2>Contact <span class="gradient-text">Us</span></h2>
+            </div>
+            <div class="contact-grid stagger-children">
+                <div class="contact-card reveal">
+                    <div class="contact-icon">📞</div>
+                    <h4>Call Us</h4>
+                    <p id="contact-phone">0212345678</p>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-icon">📧</div>
+                    <h4>Email</h4>
+                    <p id="contact-email">info@onukpaexpress.com</p>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-icon">📍</div>
+                    <h4>Location</h4>
+                    <p id="contact-location">Accra, Ghana</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Onukpa Express Ride</h3>
+                    <p>Safe, reliable, and affordable intercity transport across Ghana.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#hero">Home</a>
+                    <a href="#routes-section">Routes</a>
+                    <a href="#book">Book Trip</a>
+                    <a href="#check-booking">Check Booking</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="dashboard/">Admin Portal</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Onukpa Express Ride. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" hidden>
+        <span class="toast-icon"></span>
+        <span class="toast-message"></span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unified-pay.hubtel.com/js/v1/checkout.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

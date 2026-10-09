@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed - WKM Transport</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .success-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0f1a2e, #1a2b4c); padding: 2rem; }
+        .success-card { background: white; border-radius: 16px; padding: 3rem 2rem; max-width: 500px; width: 100%; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.25); }
+        .success-icon { width: 80px; height: 80px; background: #D1FAE5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2.5rem; animation: scaleIn 0.5s ease; }
+        @keyframes scaleIn { from{transform:scale(0)} to{transform:scale(1)} }
+        .success-card h2 { color: #1a2b4c; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .success-card .subtitle { color: #6B7280; margin-bottom: 2rem; }
+        .ticket-display { background: #F9FAFB; border: 2px dashed #E5E7EB; border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; }
+        .ticket-code { font-size: 1.8rem; font-weight: 800; color: #D97706; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .ticket-label { font-size: 0.8rem; color: #9CA3AF; text-transform: uppercase; letter-spacing: 0.1em; }
+        .booking-details { text-align: left; background: #F9FAFB; border-radius: 12px; padding: 1.25rem; margin-bottom: 2rem; }
+        .booking-details p { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.95rem; color: #4B5563; border-bottom: 1px solid #F3F4F6; }
+        .booking-details p:last-child { border-bottom: none; }
+        .booking-details strong { color: #1F2937; }
+        .actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .actions a, .actions button { flex: 1; min-width: 140px; padding: 0.75rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; font-family: 'Inter',sans-serif; cursor: pointer; text-decoration: none; text-align: center; transition: all 0.3s ease; }
+        .btn-home { background: #1a2b4c; color: white; border: none; }
+        .btn-home:hover { background: #2d4a7a; }
+        .btn-print { background: white; color: #1a2b4c; border: 2px solid #1a2b4c; }
+        .btn-print:hover { background: #1a2b4c; color: white; }
+    </style>
+</head>
+<body>
+    <div class="success-page">
+        <div class="success-card">
+            <div class="success-icon">✅</div>
+            <h2>Booking Confirmed!</h2>
+            <p class="subtitle">Your trip has been successfully booked</p>
+            <div class="ticket-display">
+                <div class="ticket-label">Your Ticket Code</div>
+                <div class="ticket-code" id="ticket-code">---</div>
+                <p style="font-size:0.85rem;color:#6B7280;">Save this code for check-in</p>
+            </div>
+            <div class="booking-details" id="booking-details">
+                <p>Loading booking details...</p>
+            </div>
+            <div class="actions">
+                <a href="/" class="btn-home">← Back Home</a>
+                <button class="btn-print" onclick="window.print()">🖨️ Print Ticket</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const params = new URLSearchParams(window.location.search);
+            const ticket = params.get('ticket');
+            if (ticket) {
+                document.getElementById('ticket-code').textContent = ticket;
+                try {
+                    const res = await fetch(`http://localhost:5000/api/v1/bookings/ticket/${ticket}`);
+                    const data = await res.json();
+                    if (data.success) {
+                        const b = data.booking;
+                        document.getElementById('booking-details').innerHTML = `
+                            <p><span>Route</span><strong>Accra → ${b.destination}</strong></p>
+                            <p><span>Date</span><strong>${new Date(b.travel_date).toLocaleDateString('en-GB')}</strong></p>
+                            <p><span>Time</span><strong>${b.departure_time}</strong></p>
+                            <p><span>Passengers</span><strong>${b.passengers}</strong></p>
+                            <p><span>Total Paid</span><strong>GHS ${parseFloat(b.total_amount).toFixed(2)}</strong></p>
+                            <p><span>Status</span><strong style="color:#10B981;">${b.payment_status.toUpperCase()}</strong></p>
+                        `;
+                    }
+                } catch(e) {
+                    document.getElementById('booking-details').innerHTML = '<p>Booking details will be sent to your email.</p>';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

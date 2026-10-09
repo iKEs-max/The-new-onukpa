@@ -1,0 +1,29 @@
+.toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+}
+
+.toggle:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
+}
+
+[data-theme='dark'] .toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+  transition: transform 0.5s ease;
+}
+
+.toggle:hover .icon {
+  transform: rotate(15deg);
+}

@@ -1,0 +1,11 @@
+import{l as c,K as n,o as e,J as r,D as o,E as l}from"./index-DeVM_ric.js";import{B as s}from"./Button-DkAPnQau.js";/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const m=c("Home",[["path",{d:"m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"y5dka4"}],["polyline",{points:"9 22 9 12 15 12 15 22",key:"e2us08"}]]);/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const d=c("Printer",[["polyline",{points:"6 9 6 2 18 2 18 9",key:"1306q4"}],["path",{d:"M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2",key:"143wyd"}],["rect",{width:"12",height:"8",x:"6",y:"14",key:"5ipwut"}]]),p="_page_6emfi_1",h="_card_6emfi_17",k="_iconWrapper_6emfi_41",u="_title_6emfi_65",_="_subtitle_6emfi_79",x="_ticketBox_6emfi_91",f="_ticketLabel_6emfi_115",b="_ticketNumber_6emfi_129",j="_info_6emfi_143",y="_actions_6emfi_163",i={page:p,card:h,iconWrapper:k,title:u,subtitle:_,ticketBox:x,ticketLabel:f,ticketNumber:b,info:j,actions:y},v=()=>{const[a]=n(),t=a.get("ticket")||"";return e.jsx("div",{className:`container ${i.page}`,children:e.jsxs("div",{className:i.card,children:[e.jsx("div",{className:i.iconWrapper,children:e.jsx(r,{size:56})}),e.jsx("h1",{className:i.title,children:"Booking Confirmed!"}),e.jsx("p",{className:i.subtitle,children:"Your booking has been successfully confirmed. We've sent a confirmation email with your ticket details."}),t&&e.jsxs("div",{className:i.ticketBox,children:[e.jsx("span",{className:i.ticketLabel,children:"Ticket Number"}),e.jsx("span",{className:i.ticketNumber,children:t})]}),e.jsxs("div",{className:i.info,children:[e.jsx("p",{children:"Please arrive at the departure point at least 15 minutes before your scheduled departure time."}),e.jsx("p",{children:"Present your ticket number or confirmation email at the boarding point."})]}),e.jsxs("div",{className:i.actions,children:[e.jsx(o,{to:l.HOME,children:e.jsx(s,{variant:"primary",size:"lg",leftIcon:e.jsx(m,{size:18}),children:"Go Home"})}),e.jsx(s,{variant:"outline",size:"lg",leftIcon:e.jsx(d,{size:18}),onClick:()=>window.print(),children:"Print Ticket"})]})]})})};export{v as BookingSuccess};

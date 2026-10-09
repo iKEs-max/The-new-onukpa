@@ -1,0 +1,26 @@
+import{l as o,o as t,q as u,g as m,L as _,A as p}from"./index-DeVM_ric.js";import{u as y,D as k}from"./DataTable-hNIIbYMP.js";import{a as h,b as v}from"./formatters-KT_3Ig8M.js";import{U as x}from"./users-7kiHNuY4.js";import"./api-DRyQtYMU.js";/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const b=o("CalendarCheck",[["path",{d:"M8 2v4",key:"1cmpym"}],["path",{d:"M16 2v4",key:"4m81vk"}],["rect",{width:"18",height:"18",x:"3",y:"4",rx:"2",key:"1hopcy"}],["path",{d:"M3 10h18",key:"8toen8"}],["path",{d:"m9 16 2 2 4-4",key:"19s6y9"}]]);/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const N=o("DollarSign",[["line",{x1:"12",x2:"12",y1:"2",y2:"22",key:"7eqyqh"}],["path",{d:"M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",key:"1b0p4s"}]]);/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const D=o("Map",[["path",{d:"M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z",key:"169xi5"}],["path",{d:"M15 5.764v15",key:"1pn4in"}],["path",{d:"M9 3.236v15",key:"1uimfh"}]]);/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const g=o("TrendingDown",[["polyline",{points:"22 17 13.5 8.5 8.5 13.5 2 7",key:"1r2t7k"}],["polyline",{points:"16 17 22 17 22 11",key:"11uiuu"}]]);/**
+ * @license lucide-react v0.363.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const j=o("TrendingUp",[["polyline",{points:"22 7 13.5 15.5 8.5 10.5 2 17",key:"126l90"}],["polyline",{points:"16 7 22 7 22 13",key:"kwv8wd"}]]),E="_card_19im9_1",w="_header_19im9_35",C="_title_19im9_47",T="_iconWrapper_19im9_59",L="_value_19im9_89",M="_trend_19im9_105",f="_trendUp_19im9_121",A="_trendDown_19im9_123",S="_trendLabel_19im9_127",s={card:E,header:w,title:C,iconWrapper:T,value:L,trend:M,trendUp:f,trendDown:A,trendLabel:S},R=({title:e,value:d,icon:l,trend:a,trendLabel:i,className:r})=>{const c=a!==void 0&&a>=0;return t.jsxs("div",{className:u(s.card,r),children:[t.jsxs("div",{className:s.header,children:[t.jsx("span",{className:s.title,children:e}),t.jsx("div",{className:s.iconWrapper,children:l})]}),t.jsx("div",{className:s.value,children:d}),a!==void 0&&t.jsxs("div",{className:u(s.trend,c?s.trendUp:s.trendDown),children:[c?t.jsx(j,{size:14}):t.jsx(g,{size:14}),t.jsxs("span",{children:[Math.abs(a),"%"]}),i&&t.jsx("span",{className:s.trendLabel,children:i})]})]})},U="_page_1w9eb_1",z="_title_1w9eb_9",G="_statsGrid_1w9eb_23",I="_tableSection_1w9eb_37",O="_sectionTitle_1w9eb_45",P="_statusCONFIRMED_1w9eb_59",B="_statusPENDING_1w9eb_75",$="_statusCANCELLED_1w9eb_91",W="_statusCOMPLETED_1w9eb_107",n={page:U,title:z,statsGrid:G,tableSection:I,sectionTitle:O,statusCONFIRMED:P,statusPENDING:B,statusCANCELLED:$,statusCOMPLETED:W},q=[{key:"ticketNumber",header:"Ticket",sortable:!0},{key:"route",header:"Route",render:e=>e.route?`${e.route.departure} → ${e.route.destination}`:"—"},{key:"numberOfTickets",header:"Tickets",sortable:!0},{key:"totalAmount",header:"Amount",sortable:!0,render:e=>h(Number(e.totalAmount))},{key:"status",header:"Status",render:e=>t.jsx("span",{className:n[`status${e.status}`],children:e.status})},{key:"createdAt",header:"Date",sortable:!0,render:e=>v(e.createdAt)}],Q=()=>{const{stats:e,allBookings:d,isLoading:l,fetchDashboardStats:a,fetchAllBookings:i}=y();return m.useEffect(()=>{a(),i({limit:10,page:1})},[a,i]),l&&!e?t.jsx(_,{fullScreen:!0}):t.jsxs("div",{className:n.page,children:[t.jsx("h1",{className:n.title,children:"Dashboard"}),t.jsx(p.div,{className:n.statsGrid,variants:{hidden:{opacity:0},show:{opacity:1,transition:{staggerChildren:.1}}},initial:"hidden",animate:"show",children:[{title:"Total Bookings",value:(e==null?void 0:e.totalBookings)??0,icon:t.jsx(b,{size:20}),trend:e==null?void 0:e.bookingsTrend,trendLabel:"vs last month"},{title:"Revenue",value:h((e==null?void 0:e.totalRevenue)??0),icon:t.jsx(N,{size:20}),trend:e==null?void 0:e.revenueTrend,trendLabel:"vs last month"},{title:"Total Users",value:(e==null?void 0:e.totalUsers)??0,icon:t.jsx(x,{size:20}),trend:e==null?void 0:e.usersTrend,trendLabel:"vs last month"},{title:"Active Routes",value:(e==null?void 0:e.activeRoutes)??0,icon:t.jsx(D,{size:20})}].map((r,c)=>t.jsx(p.div,{variants:{hidden:{opacity:0,y:20},show:{opacity:1,y:0,transition:{type:"spring",stiffness:120}}},children:t.jsx(R,{...r})},c))}),t.jsxs("div",{className:n.tableSection,children:[t.jsx("h2",{className:n.sectionTitle,children:"Recent Bookings"}),t.jsx(k,{columns:q,data:d.slice(0,10),keyExtractor:r=>r.id,isLoading:l,emptyMessage:"No bookings yet."})]})]})};export{Q as AdminDashboard};
